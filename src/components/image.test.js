@@ -1,13 +1,12 @@
 import React from "react";
-import {cleanup} from "@testing-library/react";
-import {render} from "react-dom";
+import {cleanup, render, screen} from "@testing-library/react";
 import Image from "./image";
 
 beforeEach(()=>{
   cleanup();
 });
 
-it(`renders an image`,()=>{
+it.only(`renders an image`,()=>{
   render(<Image/>);
   expect(screen.getByRole(`img`)).toBeInTheDocument();
 });
