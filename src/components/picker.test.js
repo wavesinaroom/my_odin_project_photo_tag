@@ -25,6 +25,6 @@ it(`positions CSS`,()=>{
 
 });
 
-it(`sets selection state from image`,{
+it(`sets selection state from image`,()=>{
 
 });
