@@ -10,7 +10,7 @@ it(`shows dialogue`,()=>{
 
 });
 
-it(`hides dialogue`,()=>{
+it.only(`hides dialogue`,()=>{
 
 });
 
@@ -25,7 +25,7 @@ it(`renders all items names in a list`,()=>{
   expect(screen.getByText(`Book`)).toBeInTheDocument();
 });
 
-it.only(`positions CSS`, async()=>{
+it(`positions CSS`, async()=>{
   const coordinates = {x:500, y:400};
 
   render(<Picker click={coordinates}/>);

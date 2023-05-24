@@ -9,13 +9,13 @@ const Picker = ({coordinates,selection})=>{
   return(
     <>
       <dialog>
-        <menu>
+        <form method="dialog">
           <li><button onClick={handleItemSelection}>Cat</button></li>
           <li><button onClick={handleItemSelection}>Dog</button></li>
           <li><button onClick={handleItemSelection}>Crayons</button></li>
           <li><button onClick={handleItemSelection}>Doll</button></li>
           <li><button onClick={handleItemSelection}>Book</button></li>
-        </menu>
+        </form>
       </dialog>
     </>
   );
