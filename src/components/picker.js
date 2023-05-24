@@ -1,9 +1,9 @@
 import React from "react";
+import {styled} from "styled-components";
 
-const Picker = ({click, selection})=>{
+const Picker = ({coordinates,selection})=>{
 
   function handleItemSelection(e){
-    //TODO: Takes selected item and setsSelection with props.click all together
     setSelection({coordinates:{coordinates}, item:e.value});
   }
   return(
@@ -22,3 +22,9 @@ const Picker = ({click, selection})=>{
 }
 
 export default Picker;
+
+const dialog = styled.dialog`
+  position: absolute;
+  top: ${props=>props.coordinates.y}px;
+  left: ${props=>props.coordinates.x}px;
+`

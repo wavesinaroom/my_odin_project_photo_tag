@@ -1,6 +1,10 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import Picker from "./picker";
+
+beforeEach(()=>{
+  cleanup();
+});
 
 it(`shows dialogue`,()=>{
 
@@ -10,7 +14,7 @@ it(`hides dialogue`,()=>{
 
 });
 
-it.only(`renders all items names in a list`,()=>{
+it(`renders all items names in a list`,()=>{
 
   render(<Picker/>);
 
@@ -21,8 +25,18 @@ it.only(`renders all items names in a list`,()=>{
   expect(screen.getByText(`Book`)).toBeInTheDocument();
 });
 
-it(`positions CSS`,()=>{
+it.only(`positions CSS`, async()=>{
+  const coordinates = {x:500, y:400};
 
+  render(<Picker click={coordinates}/>);
+
+  const picker = document.getElementsByTagName('dialog');
+  const style = window.getComputedStyle(picker[0]);
+
+  waitFor(()=>{
+    expect(style.top).toBe(500);
+    expect(style.left).toBe(400);
+  })
 });
 
 it(`sets selection state from image`,()=>{
