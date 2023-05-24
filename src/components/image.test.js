@@ -19,3 +19,19 @@ it(`fetches item coordinates from server based on <Picker/> selection`,()=>{
 it(`checks user input coordinates matches item coordinates`,()=>{
 
 });
+
+it(`shows dialogue`,()=>{
+
+});
+
+it.only(`hides dialogue`,()=>{
+
+});
+
+it(`renders all items names in a list`,()=>{
+
+});
+
+it(`positions CSS`,()=>{
+
+});
