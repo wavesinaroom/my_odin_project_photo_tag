@@ -37,8 +37,16 @@ it(`hides dialogue`,()=>{
 
 });
 
-it.skip(`renders all items names in a list`,()=>{
+it(`renders all items names in a list`,()=>{
+  render(<Image/>);
+  fireEvent.click(screen.queryByRole(`img`));
 
+  expect(screen.getAllByRole(`button`)).toHaveLength(5);
+  expect(screen.getByText(`Cat`)).toBeInTheDocument();
+  expect(screen.getByText(`Dog`)).toBeInTheDocument();
+  expect(screen.getByText(`Crayons`)).toBeInTheDocument();
+  expect(screen.getByText(`Book`)).toBeInTheDocument();
+  expect(screen.getByText(`Doll`)).toBeInTheDocument();
 });
 
 it.skip(`positions CSS`,()=>{
