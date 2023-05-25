@@ -9,29 +9,38 @@ beforeEach(()=>{
 it(`renders an image`,()=>{
   render(<Image/>);
   expect(screen.getByRole(`img`)).toBeInTheDocument();
+  expect(screen.queryByRole(`dialog`)).not.toBeInTheDocument();
 });
 
 
-it(`fetches item coordinates from server based on <Picker/> selection`,()=>{
+it.skip(`fetches item coordinates from server based on <Picker/> selection`,()=>{
 
 });
 
-it(`checks user input coordinates matches item coordinates`,()=>{
+it.skip(`checks user input coordinates matches item coordinates`,()=>{
 
 });
 
 it(`shows dialogue`,()=>{
+  render(<Image/>);
+  fireEvent.click(screen.queryByRole(`img`));
+
+  expect(screen.getByRole(`dialog`)).toBeInTheDocument();
+});
+
+it(`hides dialogue`,()=>{
+  render(<Image/>);
+  fireEvent.click(screen.queryByRole(`img`));
+  fireEvent.click(screen.getByRole(`button`,{name:`Cat`}));
+  
+  expect(screen.queryByRole(`dialog`)).not.toBeInTheDocument();
 
 });
 
-it.only(`hides dialogue`,()=>{
+it.skip(`renders all items names in a list`,()=>{
 
 });
 
-it(`renders all items names in a list`,()=>{
-
-});
-
-it(`positions CSS`,()=>{
+it.skip(`positions CSS`,()=>{
 
 });

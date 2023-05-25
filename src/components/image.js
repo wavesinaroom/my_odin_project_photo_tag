@@ -1,31 +1,33 @@
-import React, {useState, useRef} from "react";
+import React, {useState} from "react";
+import {styled} from 'styled-components';
 
 const Image = () =>{
   const [coordinate, setCoordinate] = useState({x:0, y:0});
   const [selection, setSelection] = useState(null);
-  const dialog = useRef(null);
+  const [isOpened, toggleModal] = useState(false);
 
   function handleUserClick(e){
     const newCoordinate = {x:e.clientX, y:e.clientY} 
     setCoordinate(newCoordinate);
-    dialog.current.showModal();
+    toggleModal(!isOpened);
   }
 
   function handleItemSelection(e){
     setSelection({coordinates:{coordinate}, item:e.value});
+    toggleModal(!isOpened);
   }
 
   return(
     <>
-      <img src="https://www.puzzleprime.com/wp-content/uploads/2018/10/bigstock-Find-Objects-Visual-Game-Solu-72484915-1-1920x1574.jpg" onClick={handleUserClick}/>
-      <dialog ref={dialog}>
-        <form method="dialog">
-          <li><button onClick={handleItemSelection}>Cat</button></li>
-          <li><button onClick={handleItemSelection}>Dog</button></li>
-          <li><button onClick={handleItemSelection}>Crayons</button></li>
-          <li><button onClick={handleItemSelection}>Doll</button></li>
-          <li><button onClick={handleItemSelection}>Book</button></li>
-        </form>
+      <img alt="sarah's-mess" src="https://www.puzzleprime.com/wp-content/uploads/2018/10/bigstock-Find-Objects-Visual-Game-Solu-72484915-1-1920x1574.jpg" onClick={handleUserClick}/>
+      <dialog open={isOpened}>
+        <menu>
+          <button onClick={handleItemSelection}>Cat</button>
+          <button onClick={handleItemSelection}>Dog</button>
+          <button onClick={handleItemSelection}>Crayons</button>
+          <button onClick={handleItemSelection}>Book</button>
+          <button onClick={handleItemSelection}>Doll</button>
+        </menu>
       </dialog>
     </>
   );
