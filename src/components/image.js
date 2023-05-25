@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {styled} from 'styled-components';
 
 const Image = () =>{
-  const [coordinate, setCoordinate] = useState({x:0, y:0});
+  const [coordinate, setCoordinate] = useState(null);
   const [selection, setSelection] = useState(null);
   const [isOpened, toggleModal] = useState(false);
 
@@ -37,6 +37,6 @@ export default Image;
 
 const dialog = styled.dialog`
   position: absolute;
-  top: ${props=>props.coordinates.y}px;
-  left: ${props=>props.coordinates.x}px;
+  top: ${props=>props.coordinate.y}px;
+  left: ${props=>props.coordinate.x}px;
 `
