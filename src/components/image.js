@@ -1,10 +1,13 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {styled} from 'styled-components';
+import {supase} form '../config/supabaseClient'
 
 const Image = () =>{
   const [coordinate, setCoordinate] = useState(null);
   const [selection, setSelection] = useState(null);
   const [isOpened, toggleModal] = useState(false);
+  const [items, setItems] = useState(null);
+  const [fetchError, setFetchError]  = useState(null);
 
   function handleUserClick(e){
     const newCoordinate = {x:e.clientX, y:e.clientY} 
@@ -16,6 +19,25 @@ const Image = () =>{
     setSelection({coordinates:{coordinate}, item:e.value});
     toggleModal(!isOpened);
   }
+
+  useEffect(()=>{
+    
+    const{data,error} = await supase
+      .from(`coordinates`)
+      .select();
+
+      if(error){
+        setFetchError(error);
+        setItems(null);
+        console.log(error);
+      }
+
+      if(data){
+        setItems(data);
+        setFetchError(error);
+        console.dir(data);
+      }
+  },[])
 
   return(
     <>

@@ -12,8 +12,7 @@ it(`renders an image`,()=>{
   expect(screen.queryByRole(`dialog`)).not.toBeInTheDocument();
 });
 
-
-it.skip(`fetches item coordinates from server based on <Picker/> selection`,()=>{
+it.skip(`fetches item coordinates from server based on selection`,()=>{
 
 });
 
