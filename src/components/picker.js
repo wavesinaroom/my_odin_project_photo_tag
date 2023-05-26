@@ -22,3 +22,9 @@ const Picker = ({click, selection})=>{
 }
 
 export default Picker;
+
+const dialog = styled.dialog`
+  position:absolute;
+  top:${props=>props.y}px;
+  left:${props=>props.x}px;
+`
