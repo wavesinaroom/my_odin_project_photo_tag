@@ -1,6 +1,18 @@
+import React, {useEffect, useState} from "react";
 import { styled } from "styled-components";
 
 const Picker = ({click, selection})=>{
+  const [position, setPosition] = useState(click);
+
+  const newPosition=(e)=>{
+    return {position:'absolute',
+            left:e.x+'px',
+            top:e.y+'px'}
+  }
+
+  useEffect(()=>{
+    setPosition(newPosition(click));
+  },[click, setPosition])
 
   function handleSelection(e){
     setSelection({coordinates: {click}, item:e.value});
@@ -8,7 +20,7 @@ const Picker = ({click, selection})=>{
 
   return(
     <>
-      <dialog>
+      <dialog style={position}>
         <menu>
           <button onClick={handleSelection}>Cat</button>
           <button onClick={handleSelection}>Dog</button>
@@ -23,8 +35,3 @@ const Picker = ({click, selection})=>{
 
 export default Picker;
 
-const dialog = styled.dialog`
-  position:absolute;
-  top:${props=>props.y}px;
-  left:${props=>props.x}px;
-`
