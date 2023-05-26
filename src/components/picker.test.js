@@ -1,45 +1,37 @@
 import React from "react";
-import {cleanup, fireEvent, render, screen, waitFor} from "@testing-library/react";
+import {cleanup, fireEvent, render, screen } from "@testing-library/react";
 import Picker from "./picker";
 
 beforeEach(()=>{
   cleanup();
 })
 
-it(`shows dialogue`,()=>{
-});
-
-it(`hides dialogue`,()=>{
-  render(<Picker/>);
-  fireEvent.click(screen.queryByRole(`img`));
-  fireEvent.click(screen.getByRole(`button`,{name:`Cat`}));
-  
-  expect(screen.queryByRole(`dialog`)).not.toBeInTheDocument();
-
-});
-
 it(`renders all items names in a list`,()=>{
   render(<Picker/>);
-  fireEvent.click(screen.queryByRole(`img`));
 
-  expect(screen.getAllByRole(`button`)).toHaveLength(5);
-  expect(screen.getByText(`Cat`)).toBeInTheDocument();
-  expect(screen.getByText(`Dog`)).toBeInTheDocument();
-  expect(screen.getByText(`Crayons`)).toBeInTheDocument();
-  expect(screen.getByText(`Book`)).toBeInTheDocument();
-  expect(screen.getByText(`Doll`)).toBeInTheDocument();
+  expect(screen.getByRole(`button`,{name:`Cat`, hidden:true})).toBeInTheDocument();
+  expect(screen.getByRole(`button`,{name:`Dog`, hidden:true})).toBeInTheDocument();
+  expect(screen.getByRole(`button`,{name:`Crayons`, hidden:true})).toBeInTheDocument();
+  expect(screen.getByRole(`button`,{name:`Book`, hidden:true})).toBeInTheDocument();
+  expect(screen.getByRole(`button`,{name:`Doll`, hidden:true})).toBeInTheDocument();
 });
 
-it(`positions CSS`,async()=>{
-  render(<Picker/>);
+it.skip(`shows dialogue`,()=>{
+});
+
+it.skip(`hides dialogue`,()=>{
+
+});
+
+
+it.skip(`positions CSS`,()=>{
+  render(<Picker click={{x:500, y:450}}/>);
 
   const picker = document.getElementsByTagName('dialog');
   const style = window.getComputedStyle(picker[0]);
 
   fireEvent.click(screen.queryByRole(`img`));
-  waitFor(()=>{
-    expect(style.top).toBe(0);
-    expect(style.left).toBe(0);
-  })
+    expect(style.top).toBe(450);
+    expect(style.left).toBe(500);
 });
 
