@@ -27,12 +27,10 @@ it(`positions CSS`,()=>{
   expect(style.left).toBe('500px');
 });
 
-it.skip(`shows dialogue`,()=>{
-});
-
-it.skip(`hides dialogue`,()=>{
+it.skip(`closes dialog when clicking on an item`,()=>{
 
 });
 
+it.skip(`closes dialog when clicking outside of component`,()=>{
 
-
+});
