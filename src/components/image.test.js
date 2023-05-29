@@ -23,9 +23,11 @@ describe(`Image`,()=>{
 })
 
 describe(`Pop up dialog`,()=>{
-  it.skip(`opens dialog`,()=>{
+  it(`opens dialog`,()=>{
     render(<Image/>)
-
+    expect(screen.queryByRole(`dialog`)).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole(`img`));
+    expect(screen.getByRole(`dialog`)).toBeInTheDocument();
   });
 
   it.skip(`renders all items names in a list`,()=>{
