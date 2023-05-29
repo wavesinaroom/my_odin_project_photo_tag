@@ -1,6 +1,7 @@
 import React from "react";
-import {cleanup, waitFor, render, screen } from "@testing-library/react";
+import {cleanup,fireEvent, waitFor, render, screen } from "@testing-library/react";
 import Picker from "./picker";
+import Image from "./image"
 
 beforeEach(()=>{
   cleanup();
@@ -27,7 +28,11 @@ it(`positions CSS`,()=>{
   expect(style.left).toBe('500px');
 });
 
-it.skip(`closes dialog when clicking on an item`,()=>{
+it(`closes dialog when clicking on an item`, async()=>{
+  render(<Picker click={{x:500, y:450}}/>);
+
+  fireEvent.click(screen.getByRole(`button`, {name:`Cat`, hidden:true}));
+  expect(screen.queryByRole(`button`,{name:`Cat`, hidden:true})).not.toBeInTheDocument();
 
 });
 

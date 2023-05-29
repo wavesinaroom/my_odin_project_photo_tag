@@ -1,8 +1,12 @@
-import React, {useEffect, useState} from "react";
-import { styled } from "styled-components";
+import React, {useEffect, useState, useRef} from "react";
 
 const Picker = ({click, selection})=>{
   const [position, setPosition] = useState(click);
+  const [isModalOpen, setIsModalOpen] = useState(true);
+  const ref = useRef();
+  useOnClickOutside(ref,()=>{
+    setIsModalOpen(false);
+  })
 
   const newPosition=(e)=>{
     return {position:'absolute',
@@ -14,13 +18,31 @@ const Picker = ({click, selection})=>{
     setPosition(newPosition(click));
   },[click, setPosition])
 
-  function handleSelection(e){
-    setSelection({coordinates: {click}, item:e.value});
+  function handleSelection(){
+    setIsModalOpen(false);
+  }
+
+  function useOnClickOutside(ref, handler){
+    useEffect(()=>{
+      const listener = (event)=>{
+        if(!ref.current || ref.current.contains(event.target))
+          return;
+        handler(event);
+      }
+      document.addEventListener(`mousedown`, listener);
+      document.addEventListener(`touchstart`, listener);
+
+      return()=>{
+        document.removeEventListener(`mousedown`, listener);
+        document.removeEventListener(`touchstart`, listener);
+      }
+    },[ref,handler]
+    );
   }
 
   return(
     <>
-      <dialog style={position}>
+      <dialog ref={ref} style={position} open={isModalOpen}>
         <menu>
           <button onClick={handleSelection}>Cat</button>
           <button onClick={handleSelection}>Dog</button>
