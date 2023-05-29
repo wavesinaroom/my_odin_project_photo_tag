@@ -6,33 +6,38 @@ beforeEach(()=>{
   cleanup();
 });
 
-it(`renders an image`,()=>{
-  render(<Image/>);
-  expect(screen.getByRole(`img`)).toBeInTheDocument();
-  expect(screen.queryByRole(`dialog`)).not.toBeInTheDocument();
-});
+describe(`Image`,()=>{
+  it(`renders an image`,()=>{
+    render(<Image/>);
+    expect(screen.getByRole(`img`)).toBeInTheDocument();
+    expect(screen.queryByRole(`dialog`)).not.toBeInTheDocument();
+  });
 
-it.skip(`fetches item coordinates from server based on selection`,()=>{
+  it.skip(`fetches item coordinates from server based on selection`,()=>{
 
-});
+  });
 
-it.skip(`checks user input coordinates matches item coordinates`,()=>{
+  it.skip(`checks user input coordinates matches item coordinates`,()=>{
 
-});
+  });
+})
 
-it.skip(`opens dialog`,()=>{
+describe(`Pop up dialog`,()=>{
+  it.skip(`opens dialog`,()=>{
+    render(<Image/>)
 
-});
+  });
 
-it.skip(`renders all items names in a list`,()=>{
-});
+  it.skip(`renders all items names in a list`,()=>{
+  });
 
-it.skip(`positions CSS`,()=>{
-});
+  it.skip(`positions CSS`,()=>{
+  });
 
-it.skip(`closes dialog when clicking on an item`,()=>{
-});
+  it.skip(`closes dialog when clicking on an item`,()=>{
+  });
 
-it.skip(`closes dialog when clicking outside of component`,()=>{
+  it.skip(`closes dialog when clicking outside of component`,()=>{
 
-});
+  });
+})
