@@ -42,7 +42,16 @@ describe(`Pop up dialog`,()=>{
     expect(screen.getByRole(`button`,{name:`Doll`})).toBeInTheDocument();
   });
 
-  it.skip(`positions CSS`,()=>{
+  it(`positions CSS`,()=>{
+    render(<Image/>);
+
+    fireEvent.click(screen.getByRole(`img`));
+
+    const style = window.getComputedStyle(document.getElementsByTagName(`dialog`)[0])
+
+    expect(style.position).toMatch(`absolute`);
+    expect(style.top).toMatch(`0px`);
+    expect(style.left).toMatch(`0px`);
   });
 
   it.skip(`closes dialog when clicking on an item`,()=>{
