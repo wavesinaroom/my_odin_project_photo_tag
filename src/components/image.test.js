@@ -24,3 +24,15 @@ it.skip(`opens dialog`,()=>{
 
 });
 
+it.skip(`renders all items names in a list`,()=>{
+});
+
+it.skip(`positions CSS`,()=>{
+});
+
+it.skip(`closes dialog when clicking on an item`,()=>{
+});
+
+it.skip(`closes dialog when clicking outside of component`,()=>{
+
+});
