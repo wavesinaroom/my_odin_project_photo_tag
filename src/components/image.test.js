@@ -24,13 +24,22 @@ describe(`Image`,()=>{
 
 describe(`Pop up dialog`,()=>{
   it(`opens dialog`,()=>{
-    render(<Image/>)
+    render(<Image/>);
     expect(screen.queryByRole(`dialog`)).not.toBeInTheDocument();
     fireEvent.click(screen.getByRole(`img`));
     expect(screen.getByRole(`dialog`)).toBeInTheDocument();
   });
 
-  it.skip(`renders all items names in a list`,()=>{
+  it(`renders all items names in a list`,()=>{
+    render(<Image/>);
+
+    fireEvent.click(screen.getByRole(`img`));
+    expect(screen.getAllByRole(`button`).length).toBe(5);
+    expect(screen.getByRole(`button`,{name:`Cat`})).toBeInTheDocument();
+    expect(screen.getByRole(`button`,{name:`Dog`})).toBeInTheDocument();
+    expect(screen.getByRole(`button`,{name:`Crayons`})).toBeInTheDocument();
+    expect(screen.getByRole(`button`,{name:`Book`})).toBeInTheDocument();
+    expect(screen.getByRole(`button`,{name:`Doll`})).toBeInTheDocument();
   });
 
   it.skip(`positions CSS`,()=>{
