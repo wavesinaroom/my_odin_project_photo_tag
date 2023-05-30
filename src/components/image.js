@@ -11,7 +11,7 @@ const Image = ({setSelection}) =>{
 
   function handleSelection(e){
     setIsModalOpen(!isModalOpen)
-    setSelection({click:click, name:e.value})
+    setSelection({pos:click, name:e.value})
   }
 
   return(
