@@ -50,7 +50,7 @@ const Game = ()=>{
   return(
     <>
       <Image setSelection={setSelection}/>
-      {{found}&&<p>Try again</p>}
+      {{found}?<p>You found it</p>:<p>Try again</p>}
       {{win}&&<LeadBoard/>}
     </>
   );
