@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import {supabase }from "../config/supabaseClient";
 import Image from "./image"
+import LeadBoard from "./leader-board";
 
 const Game = ()=>{
   const [items, setItems] = useState(null);
   const [fetchError, setFetchError] = useState(null);
   const [selection, setSelection] = useState(null);
   const [win, setWin] = useState(false);
+  const [found, setFound] = useState(false);
 
   useEffect(()=>{
 
@@ -48,6 +50,8 @@ const Game = ()=>{
   return(
     <>
       <Image setSelection={setSelection}/>
+      {{found}&&<p>Try again</p>}
+      {{win}&&<LeadBoard/>}
     </>
   );
 
