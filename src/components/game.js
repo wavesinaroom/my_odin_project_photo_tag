@@ -33,11 +33,10 @@ const Game = ()=>{
 
   useEffect(()=>{
     const item = items.find(item => item.name === selection.name )
-    let found;
 
     if(selection.click.x>item.left&&selection.click.x<item.right)
       if(selection.click.y>item.bottom&&selection.click.y<item.top)
-        found = true;
+        setFound(true);
 
     if(found){
       items.filter(item=>item.name!==selection.name)
@@ -45,7 +44,7 @@ const Game = ()=>{
         setWin(!win);
     }
 
-  },[items,win,selection])
+  },[items,win,selection,found])
 
   return(
     <>
