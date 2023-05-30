@@ -1,6 +1,6 @@
 import { useState} from "react";
 
-const Image = () =>{
+const Image = ({setSelection}) =>{
   const [click, setClick] = useState({x:0, y:0});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -9,8 +9,9 @@ const Image = () =>{
     setIsModalOpen(!isModalOpen);
   }  
 
-  function handleSelection(){
+  function handleSelection(e){
     setIsModalOpen(!isModalOpen)
+    setSelection({click:click, name:e.value})
   }
 
   return(
