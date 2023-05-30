@@ -6,6 +6,7 @@ const Image = () =>{
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [items, setItems] = useState(null);
   const [fetchError, setFetchError] = useState(null);
+  const [selection, setSelection] = useState(null);
 
   useEffect(()=>{
 
@@ -32,7 +33,8 @@ const Image = () =>{
     setClick({x:e.clientX, y:e.clientY});
     setIsModalOpen(!isModalOpen);
   }  
-  function handleSelection(){
+
+  function handleSelection(e){
     setIsModalOpen(!isModalOpen)
   }
 
