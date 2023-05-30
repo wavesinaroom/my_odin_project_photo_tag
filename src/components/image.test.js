@@ -54,10 +54,21 @@ describe(`Pop up dialog`,()=>{
     expect(style.left).toMatch(`0px`);
   });
 
-  it.skip(`closes dialog when clicking on an item`,()=>{
+  it(`closes dialog when clicking on an item`,()=>{
+    render(<Image/>);
+
+    fireEvent.click(screen.getByRole(`img`));
+    expect(screen.getByRole(`dialog`)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole(`button`,{name:`Cat`}));
+    expect(screen.queryByRole(`dialog`)).not.toBeInTheDocument();
   });
 
-  it.skip(`closes dialog when clicking outside of component`,()=>{
+  it(`closes dialog when clicking outside of component`,()=>{
+    render(<Image/>);
 
+    fireEvent.click(screen.getByRole(`img`));
+    expect(screen.getByRole(`dialog`)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole(`img`));
+    expect(screen.queryByRole(`dialog`)).not.toBeInTheDocument();
   });
 })
