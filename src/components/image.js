@@ -1,40 +1,15 @@
-import { useEffect, useState} from "react";
-import {supase} from '../config/supabaseClient'
+import { useState} from "react";
 
 const Image = () =>{
   const [click, setClick] = useState({x:0, y:0});
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [items, setItems] = useState(null);
-  const [fetchError, setFetchError] = useState(null);
-  const [selection, setSelection] = useState(null);
-
-  useEffect(()=>{
-
-    const fetchOptions = async()=>{
-      const{data,error} = await supase
-        .from(`coordinates`)
-        .select();
-
-      if(error){
-        setFetchError(error);
-        setItems(null);
-        console.log(error);
-      }
-
-      if(data){
-        setItems(data);
-        setFetchError(error);
-        console.dir(data);
-      }
-    }
-  })
 
   function handleModalPopup(e){
     setClick({x:e.clientX, y:e.clientY});
     setIsModalOpen(!isModalOpen);
   }  
 
-  function handleSelection(e){
+  function handleSelection(){
     setIsModalOpen(!isModalOpen)
   }
 
