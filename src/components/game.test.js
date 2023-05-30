@@ -21,10 +21,6 @@ it.skip(`throws error on failure`, ()=>{
 });
 
 it.skip(`renders input on success`,async ()=>{
-  render(<Game/>);
-  
-  const user = userEvent.setup();
-  pointer({keys:`[MouseLeft]`,})
 });
 
 it.skip(`resets states on game over`,()=>{
