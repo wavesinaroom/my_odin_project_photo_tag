@@ -36,10 +36,11 @@ const Game = ()=>{
 
     if(selection.click.x>item.left&&selection.click.x<item.right)
       if(selection.click.y>item.bottom&&selection.click.y<item.top)
-        setFound(true);
+        setFound(!found);
 
     if(found){
       items.filter(item=>item.name!==selection.name)
+      setFound(!found);
       if(items.length===0)
         setWin(!win);
     }
