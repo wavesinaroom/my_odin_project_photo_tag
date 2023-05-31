@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import {supabase }from "../config/supabaseClient";
 import Image from "./image"
 import LeadBoard from "./leader-board";
+import supabase from "../config/supabaseClient";
 
 const Game = ()=>{
-  const [items, setItems] = useState(null);
+  const [items, setItems] = useState([]);
   const [fetchError, setFetchError] = useState(null);
-  const [selection, setSelection] = useState(null);
+  const [selection, setSelection] = useState({});
   const [win, setWin] = useState(false);
   const [found, setFound] = useState(false);
 
@@ -14,23 +14,24 @@ const Game = ()=>{
 
     const fetchOptions = async()=>{
       const{data,error} = await supabase
-        .from(`coordinates`)
+        .from('items')
         .select();
 
       if(error){
-        setFetchError(error);
+        setFetchError('Could not fetch items');
         setItems(null);
         console.log(error);
       }
 
       if(data){
         setItems(data);
-        setFetchError(error);
-        console.dir(data);
+        setFetchError(null);
+        console.log(data);
       }
     }
-  })
-
+    fetchOptions();
+  },[])
+/*
   useEffect(()=>{
     const item = items.find(item => item.name === selection.name )
 
@@ -44,9 +45,8 @@ const Game = ()=>{
       if(items.length===0)
         setWin(!win);
     }
-
   },[items,win,selection,found])
-
+*/
   return(
     <>
       <Image setSelection={setSelection}/>
