@@ -14,7 +14,6 @@ const Image = ({handleSelection}) =>{
     <>
       <img alt="sarah's-mess" src="https://www.puzzleprime.com/wp-content/uploads/2018/10/bigstock-Find-Objects-Visual-Game-Solu-72484915-1-1920x1574.jpg" onClick={handleModalPopup} />
       <dialog style={{position:'absolute', top: `${click.y}px`, left:`${click.x}px`, marginLeft:'0px',zIndex:'2'}}open={isModalOpen}>
-        <p>{click.x}, {click.y}</p>
         <menu>
           <button onClick={(e)=>{handleSelection({click},e.value)}}>Cat</button>
           <button onClick={(e)=>{handleSelection({click},e.value)}}>Dog</button>
