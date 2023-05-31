@@ -6,7 +6,6 @@ import LeadBoard from "./leader-board";
 const Game = ()=>{
   const [items, setItems] = useState([]);
   const [fetchError, setFetchError] = useState(null);
-  const [selection, setSelection] = useState({});
   const [win, setWin] = useState(false);
   const [found, setFound] = useState(false);
 
@@ -49,7 +48,7 @@ const Game = ()=>{
 
   return(
     <>
-      <Image setSelection={handleSelection}/>
+      <Image handleSelection={handleSelection}/>
       {{found}?<p>You found it</p>:<p>Try again</p>}
       {{win}&&<LeadBoard/>}
     </>
