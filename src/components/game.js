@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
+import supabase from "../config/supabaseClient";
 import Image from "./image"
 import LeadBoard from "./leader-board";
-import supabase from "../config/supabaseClient";
 
 const Game = ()=>{
   const [items, setItems] = useState([]);
