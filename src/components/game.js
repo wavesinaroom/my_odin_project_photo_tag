@@ -31,25 +31,25 @@ const Game = ()=>{
     }
     fetchOptions();
   },[])
-/*
-  useEffect(()=>{
-    const item = items.find(item => item.name === selection.name )
 
-    if(selection.click.x>item.left&&selection.click.x<item.right)
-      if(selection.click.y>item.bottom&&selection.click.y<item.top)
+  function handleSelection(click, toy){
+    const item = items.find(item => item.name === toy )
+
+    if(click.x>item.left&&click.x<item.right)
+      if(click.y>item.bottom&&click.y<item.top)
         setFound(!found);
 
     if(found){
-      items.filter(item=>item.name!==selection.name)
+      items.filter(item=>item.name!==toy)
       setFound(!found);
       if(items.length===0)
         setWin(!win);
     }
-  },[items,win,selection,found])
-*/
+  }
+
   return(
     <>
-      <Image setSelection={setSelection}/>
+      <Image setSelection={handleSelection}/>
       {{found}?<p>You found it</p>:<p>Try again</p>}
       {{win}&&<LeadBoard/>}
     </>

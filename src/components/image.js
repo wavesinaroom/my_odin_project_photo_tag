@@ -1,6 +1,6 @@
 import { useState} from "react";
 
-const Image = ({setSelection}) =>{
+const Image = ({handleSelection}) =>{
   const [click, setClick] = useState({x:0, y:0});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -9,21 +9,17 @@ const Image = ({setSelection}) =>{
     setIsModalOpen(!isModalOpen);
   }  
 
-  function handleSelection(e){
-    setIsModalOpen(!isModalOpen)
-    setSelection({pos:click, name:e.value})
-  }
 
   return(
     <>
       <img alt="sarah's-mess" src="https://www.puzzleprime.com/wp-content/uploads/2018/10/bigstock-Find-Objects-Visual-Game-Solu-72484915-1-1920x1574.jpg" onClick={handleModalPopup} />
       <dialog style={{position:'absolute', top: `${click.x}px`, left:`${click.y}px`}}open={isModalOpen}>
         <menu>
-          <button onClick={handleSelection}>Cat</button>
-          <button onClick={handleSelection}>Dog</button>
-          <button onClick={handleSelection}>Crayons</button>
-          <button onClick={handleSelection}>Book</button>
-          <button onClick={handleSelection}>Doll</button>
+          <button onClick={(e)=>{handleSelection({click},e.value)}}>Cat</button>
+          <button onClick={(e)=>{handleSelection({click},e.value)}}>Dog</button>
+          <button onClick={(e)=>{handleSelection({click},e.value)}}>Crayons</button>
+          <button onClick={(e)=>{handleSelection({click},e.value)}}>Book</button>
+          <button onClick={(e)=>{handleSelection({click},e.value)}}>Doll</button>
         </menu>
       </dialog>
     </>
