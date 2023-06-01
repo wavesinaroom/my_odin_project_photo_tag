@@ -19,13 +19,11 @@ const Game = ()=>{
       if(error){
         setFetchError('Could not fetch items');
         setItems(null);
-        console.log(error);
       }
 
       if(data){
         setItems(data);
         setFetchError(null);
-        console.log(data);
       }
     }
     fetchOptions();
@@ -40,10 +38,10 @@ const Game = ()=>{
       return;
     }
 
-    if(click.pos.x>item.left&&click.pos.x<item.right){
-      if(click.pos.y<item.bottom&&click.pos.y>item.top){
+    if(click.x>item.left&&click.x<item.right){
+      if(click.y<item.bottom&&click.y>item.top){
         setFound(`Well done! You've found Sarah's ${toy}`);
-        items.filter(item=>item.name!==toy);
+        setItems(items.filter(item=>item.name!==toy));
       }
     }else{
       setFound(`Not quite, try again!`);
@@ -53,15 +51,16 @@ const Game = ()=>{
     if(items.length===0)
       setWin(!win);
 
+    console.log(items)
+
   }
   
-
   return(
     <>
       {fetchError&&(<p>{fetchError}</p>)}
       <Image handleAction={handleAction}/>
       <p>{found}</p>
-      {{win}&&<LeadBoard/>}
+      {win&&<LeadBoard/>}
     </>
   );
 

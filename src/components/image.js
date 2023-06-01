@@ -9,16 +9,21 @@ const Image = ({handleAction}) =>{
     setIsModalOpen(!isModalOpen);
   }  
 
+  function handleOption(e){
+    handleAction(pos, e.target.innerText);
+    setIsModalOpen(!isModalOpen);
+  }
+
   return(
     <>
       <img alt="sarah's-mess" src="https://www.puzzleprime.com/wp-content/uploads/2018/10/bigstock-Find-Objects-Visual-Game-Solu-72484915-1-1920x1574.jpg" onClick={handleModalPopup} />
       <dialog style={{position:'absolute', top: `${pos.y}px`, left:`${pos.x}px`, marginLeft:'0px',zIndex:'2'}}open={isModalOpen}>
         <menu>
-          <button onClick={(e)=>{handleAction({pos}, e.target.innerText)}}>Cat</button>
-          <button onClick={(e)=>{handleAction({pos}, e.target.innerText)}}>Dog</button>
-          <button onClick={(e)=>{handleAction({pos}, e.target.innerText)}}>Crayons</button>
-          <button onClick={(e)=>{handleAction({pos}, e.target.innerText)}}>Book</button>
-          <button onClick={(e)=>{handleAction({pos}, e.target.innerText)}}>Doll</button>
+          <button onClick={handleOption}>Cat</button>
+          <button onClick={handleOption}>Dog</button>
+          <button onClick={handleOption}>Crayons</button>
+          <button onClick={handleOption}>Book</button>
+          <button onClick={handleOption}>Doll</button>
         </menu>
       </dialog>
   </>
