@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import supabase from "../config/supabaseClient";
 import Image from "./image"
 import LeadBoard from "./leader-board";
@@ -8,6 +8,7 @@ const Game = ()=>{
   const [fetchError, setFetchError] = useState(null);
   const [win, setWin] = useState(false);
   const [found, setFound] = useState(false);
+  const [selection, setSelection] = useState(null);
 
   useEffect(()=>{
 
@@ -31,24 +32,30 @@ const Game = ()=>{
     fetchOptions();
   },[])
 
-  function handleSelection(click, toy){
-    const item = items.find(item => item.name === toy )
+  const handleAction=useCallback((selection)=>{
+    
+    const item = items.find(item => item.name === selection.toy )
 
-    if(click.x>item.left&&click.x<item.right)
-      if(click.y>item.bottom&&click.y<item.top)
+    if(selection.click.x>item.left&&selection.click.x<item.right)
+      if(selection.click.y>item.bottom&&selection.click.y<item.top)
         setFound(!found);
 
     if(found){
-      items.filter(item=>item.name!==toy)
+      items.filter(item=>item.name!==selection.toy)
       setFound(!found);
       if(items.length===0)
         setWin(!win);
     }
-  }
+  },[found, win,items])
+
+  useEffect(()=>{
+    handleAction(selection);
+  },[selection, handleAction]);
+  
 
   return(
     <>
-      <Image handleSelection={handleSelection}/>
+      <Image setSelection={setSelection}/>
       {{found}?<p>You found it</p>:<p>Try again</p>}
       {{win}&&<LeadBoard/>}
     </>
