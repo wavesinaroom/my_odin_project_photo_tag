@@ -7,7 +7,7 @@ const Game = ()=>{
   const [items, setItems] = useState([]);
   const [fetchError, setFetchError] = useState(null);
   const [win, setWin] = useState(false);
-  const [found, setFound] = useState(false);
+  const [found, setFound] = useState("");
   const [selection, setSelection] = useState(null);
 
   useEffect(()=>{
@@ -36,17 +36,18 @@ const Game = ()=>{
     
     const item = items.find(item => item.name === selection.toy )
 
-    if(selection.click.x>item.left&&selection.click.x<item.right)
-      if(selection.click.y>item.bottom&&selection.click.y<item.top)
-        setFound(!found);
-
-    if(found){
-      items.filter(item=>item.name!==selection.toy)
-      setFound(!found);
-      if(items.length===0)
-        setWin(!win);
+    if(selection.click.x>item.left&&selection.click.x<item.right){
+      if(selection.click.y>item.bottom&&selection.click.y<item.top){
+        setFound(`Well done! You've found Sarah's ${selection.toy}`);
+        items.filter(item=>item.name!==selection.toy)
+        if(items.length===0)
+          setWin(!win);
+      }
+    }else{
+      setFound(`Not quite, try again!`);
     }
-  },[found, win,items])
+
+  },[win,items])
 
   useEffect(()=>{
     handleAction(selection);
@@ -56,7 +57,7 @@ const Game = ()=>{
   return(
     <>
       <Image setSelection={setSelection}/>
-      {{found}?<p>You found it</p>:<p>Try again</p>}
+      <p>{found}</p>
       {{win}&&<LeadBoard/>}
     </>
   );
