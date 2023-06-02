@@ -53,7 +53,7 @@ const Game = ()=>{
   if(items.length===0){
     return(
       <>
-        <Input/>
+        <Input time={time}/>
       </>
     )
   }
