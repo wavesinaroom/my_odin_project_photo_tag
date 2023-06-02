@@ -1,13 +1,12 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 
 const Timer = ({time, setTime}) =>{
-  const [time, setTime] = useState(0);
 
   useEffect(()=>{
     
-    setInterval(()=>{
-      const milliseconds = Date.now-time;
-      setTime(Math.floor(milliseconds/1000));   
+    setTimeout(()=>{
+      const update = time+1;
+      setTime(update);
     },1000)
       
   })
