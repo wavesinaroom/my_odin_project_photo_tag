@@ -2,11 +2,13 @@ import { useState, useEffect} from "react";
 import supabase from "../config/supabaseClient";
 import Image from "./image"
 import Input from "./input";
+import Timer from "./timer";
 
 const Game = ()=>{
   const [items, setItems] = useState([]);
   const [fetchError, setFetchError] = useState(null);
   const [found, setFound] = useState("");
+  const [time, setTime] = useState(0);
 
   useEffect(()=>{
 
@@ -59,6 +61,7 @@ const Game = ()=>{
   return(
     <>
       {fetchError&&(<p>{fetchError}</p>)}
+      <Timer time={time} setTime={setTime}/>
       <Image handleAction={handleAction}/>
       <p>{found}</p>
     </>
