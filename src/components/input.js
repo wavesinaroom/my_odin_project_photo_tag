@@ -21,7 +21,7 @@ const Input = ({time})=>{
 
   return(
     <>
-      <dialog>
+      <dialog open>
         <p>Thanks for helping out Sarah</p>
         <form onSubmit={handleSubmit}>
           <label for="name">Your username</label>
