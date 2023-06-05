@@ -1,9 +1,9 @@
 import './App.css';
-import Input from './components/input';
+import LeadBoard from './components/leader-board';
 
 function App() {
   return (
-    <Input time={1}/>
+    <LeadBoard time={3}/>
   );
 }
 

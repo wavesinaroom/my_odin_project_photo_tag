@@ -1,11 +1,12 @@
 import {useState} from "react";
 import supabase from "../config/supabaseClient"; 
 
-const Input = ({time})=>{
+const Input = ({time, setIsModal})=>{
   const [username, setUsername] = useState(``);
   const [fetchError, setFetchError] = useState(null);
 
   const handleSubmit = async (e)=>{
+    setIsModal(prev => !prev)
     e.preventDefault();
     const {data,error} = await supabase
       .from(`leaderboard`)
