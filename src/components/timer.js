@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 
 const Timer = ({time, setTime}) =>{
-  const [format, setFormat] = useState("");
+  const [format, setFormat] = useState("00:00:00");
   useEffect(()=>{
     
     function formatTime(total){
