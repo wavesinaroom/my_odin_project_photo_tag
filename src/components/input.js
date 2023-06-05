@@ -5,27 +5,35 @@ const Input = ({time})=>{
   const [username, setUsername] = useState(``);
   const [fetchError, setFetchError] = useState(null);
 
-  const send = async (input)=>{
-    const {error} = await supabase
+  const handleSubmit = async (e)=>{
+    e.preventDefault();
+    const {data,error} = await supabase
       .from(`leaderboard`)
-      .insert({input})
+      .insert([{username, time}])
+      .select();
 
-    if(error)
+    if(error){
       setFetchError(error);
-    console.log(error);
+      console.log(error);
+    }
+
+    if(data){
+      setFetchError(null);
+      console.log(data);
+    }
   }
 
-  function handleSubmit (){
-    send({username:username, time:time});
+  function handleInput(e){
+    setUsername(e.target.value);
   }
-
   return(
     <>
+      {fetchError&&(<p>{fetchError}</p>)}
       <dialog open>
         <p>Thanks for helping out Sarah</p>
         <form onSubmit={handleSubmit}>
           <label for="name">Your username</label>
-          <input type="text" name="name" onChange={e => setUsername(e.value)} value={username}/>
+          <input type="text" name="name" onChange={handleInput} value={username}/>
           <button type="submit">Send</button>
         </form> 
       </dialog>

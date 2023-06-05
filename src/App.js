@@ -1,9 +1,9 @@
 import './App.css';
-import Game from './components/game';
+import Input from './components/input';
 
 function App() {
   return (
-    <Game/>
+    <Input time={1}/>
   );
 }
 
