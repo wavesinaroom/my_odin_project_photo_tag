@@ -13,7 +13,8 @@ const LeadBoard = ({time}) =>{
     const fetchRecords = async()=>{
       const {data,error} = await supabase
         .from('leaderboard')
-        .select();
+        .select()
+        .order('time',{ascending:true});
 
       if(error){
         setFetchError(null)

@@ -3,7 +3,7 @@ import LeadBoard from './components/leader-board';
 
 function App() {
   return (
-    <LeadBoard time={3}/>
+    <LeadBoard time={2}/>
   );
 }
 
