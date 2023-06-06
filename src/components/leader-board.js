@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useRef, useState} from "react";
 import supabase from "../config/supabaseClient";
 import Record from "./record";
 
@@ -6,9 +6,11 @@ const LeadBoard = ({time}) =>{
   const [records, setRecords] = useState([]);
   const [username, setUsername] = useState(``);
   const [fetchError, setFetchError] = useState(null);
+  const dialog = useRef();
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
+    dialog.current.close();
     const {data,error} = await supabase
       .from(`leaderboard`)
       .insert([{username, time}])
@@ -33,12 +35,12 @@ const LeadBoard = ({time}) =>{
   return(
     <>
       {fetchError&&(<p>{fetchError}</p>)}
-      <dialog open>
+      <dialog open ref={dialog}>
         <p>Thanks for helping out Sarah</p>
-        <form method="dialog" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <label for="name">Your username</label>
           <input type="text" name="name" onChange={handleInput} value={username}/>
-          <button type="submit">Send</button>
+          <button formmethod="dialog" type="submit">Send</button>
         </form> 
       </dialog>
       <table>
