@@ -35,6 +35,7 @@ const LeadBoard = ({time}) =>{
   return(
     <>
       {fetchError&&(<p>{fetchError}</p>)}
+      {dialog.current.open?
       <dialog open ref={dialog}>
         <p>Thanks for helping out Sarah</p>
         <form onSubmit={handleSubmit}>
@@ -43,6 +44,7 @@ const LeadBoard = ({time}) =>{
           <button formmethod="dialog" type="submit">Send</button>
         </form> 
       </dialog>
+        :
       <table>
         <caption>Leader Board</caption>
         <tr>
@@ -53,6 +55,7 @@ const LeadBoard = ({time}) =>{
             <Record record={record}/>
           ))}
       </table>
+      }
     </>
   );
 }
