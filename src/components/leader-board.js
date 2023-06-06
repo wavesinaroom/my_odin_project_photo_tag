@@ -1,5 +1,6 @@
 import { useEffect, useState} from "react";
 import supabase from "../config/supabaseClient";
+import uniquid from 'uniqid';
 import Record from "./record";
 
 const LeadBoard = ({time}) =>{
@@ -29,7 +30,7 @@ const LeadBoard = ({time}) =>{
 
     fetchRecords();
 
-  },[setIsModal]);
+  },[records]);
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
@@ -74,7 +75,7 @@ const LeadBoard = ({time}) =>{
               <th scope="col">Record</th>
             </tr>
               {records.map(record =>(
-                <Record record={record}/>
+                <Record key={uniquid()} record={record}/>
               ))}
           </table>
           <button>Back</button>
