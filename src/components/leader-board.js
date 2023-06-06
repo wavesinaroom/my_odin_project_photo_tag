@@ -1,4 +1,4 @@
-import {useRef, useState} from "react";
+import { useState} from "react";
 import supabase from "../config/supabaseClient";
 import Record from "./record";
 
@@ -6,11 +6,11 @@ const LeadBoard = ({time}) =>{
   const [records, setRecords] = useState([]);
   const [username, setUsername] = useState(``);
   const [fetchError, setFetchError] = useState(null);
-  const dialog = useRef();
+  const [isModal, setIsModal] = useState(true);
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
-    dialog.current.close();
+    setIsModal(!isModal);
     const {data,error} = await supabase
       .from(`leaderboard`)
       .insert([{username, time}])
@@ -35,8 +35,7 @@ const LeadBoard = ({time}) =>{
   return(
     <>
       {fetchError&&(<p>{fetchError}</p>)}
-      {dialog.current.open?
-      <dialog open ref={dialog}>
+      <dialog open={isModal} >
         <p>Thanks for helping out Sarah</p>
         <form onSubmit={handleSubmit}>
           <label for="name">Your username</label>
@@ -44,17 +43,21 @@ const LeadBoard = ({time}) =>{
           <button formmethod="dialog" type="submit">Send</button>
         </form> 
       </dialog>
-        :
-      <table>
-        <caption>Leader Board</caption>
-        <tr>
-          <th scope="col">Player</th>
-          <th scope="col">Record</th>
-        </tr>
-          {records.map(record =>(
-            <Record record={record}/>
-          ))}
-      </table>
+      {isModal?null
+      :
+        <div>
+          <table>
+            <caption>Leader Board</caption>
+            <tr>
+              <th scope="col">Player</th>
+              <th scope="col">Record</th>
+            </tr>
+              {records.map(record =>(
+                <Record record={record}/>
+              ))}
+          </table>
+          <button>Back</button>
+        </div>
       }
     </>
   );
