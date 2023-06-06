@@ -1,9 +1,9 @@
 import './App.css';
-import LeadBoard from './components/leader-board';
+import Home from './components/home';
 
 function App() {
   return (
-    <LeadBoard time={2}/>
+    <Home/>
   );
 }
 
