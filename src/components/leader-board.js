@@ -1,4 +1,5 @@
 import { useEffect, useState} from "react";
+import {Link} from 'react-router-dom'
 import supabase from "../config/supabaseClient";
 import uniquid from 'uniqid';
 import Record from "./record";
@@ -78,7 +79,7 @@ const LeadBoard = ({time}) =>{
                 <Record key={uniquid()} record={record}/>
               ))}
           </table>
-          <button>Back</button>
+          <Link to='/'><button>Back</button></Link>
         </div>
       }
     </>

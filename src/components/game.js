@@ -1,3 +1,4 @@
+import {useNavigate} from 'react-router-dom';
 import { useState, useEffect} from "react";
 import supabase from "../config/supabaseClient";
 import Image from "./image"
@@ -8,6 +9,7 @@ const Game = ()=>{
   const [fetchError, setFetchError] = useState(null);
   const [found, setFound] = useState("");
   const [time, setTime] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(()=>{
 
@@ -42,6 +44,8 @@ const Game = ()=>{
       if(click.y<item.bottom&&click.y>item.top){
         setFound(`Well done! You've found Sarah's ${toy}`);
         setItems(items.filter(item=>item.name!==toy));
+        if(items.length === 0)
+          navigate("/leaderboard", {state:time});
       }
     }else{
       setFound(`Not quite, try again!`);
