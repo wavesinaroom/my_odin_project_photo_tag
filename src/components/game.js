@@ -1,11 +1,11 @@
 import {useNavigate} from 'react-router-dom';
-import { useState, useEffect} from "react";
+import { useState, useEffect, useRef} from "react";
 import supabase from "../config/supabaseClient";
 import Image from "./image"
 import Timer from "./timer";
 
 const Game = ()=>{
-  const [items, setItems] = useState([]);
+  let items = useRef([]);
   const [fetchError, setFetchError] = useState(null);
   const [found, setFound] = useState("");
   const [time, setTime] = useState(0);
@@ -20,11 +20,11 @@ const Game = ()=>{
 
       if(error){
         setFetchError('Could not fetch items');
-        setItems(null);
+        items.current = [];
       }
 
       if(data){
-        setItems(data);
+        items.current = data;
         setFetchError(null);
       }
     }
@@ -33,7 +33,7 @@ const Game = ()=>{
 
   function handleAction(click, toy){
     
-    const item = items.find(item => item.name === toy )
+    const item = items.current.find(item => item.name === toy )
 
     if(!item){
       setFound(`Not quite, try again!`);
@@ -43,8 +43,8 @@ const Game = ()=>{
     if(click.x>item.left&&click.x<item.right){
       if(click.y<item.bottom&&click.y>item.top){
         setFound(`Well done! You've found Sarah's ${toy}`);
-        setItems(items.filter(item=>item.name!==toy));
-        if(items.length === 0)
+        items.current = items.current.filter((item)=>item.name!==toy);
+        if(items.current.length === 0)
           navigate("/leaderboard", {state:time});
       }
     }else{
