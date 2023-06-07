@@ -82,6 +82,7 @@ const LeadBoard = () =>{
               ))}
           </table>
           <Link to='/'><button>Back</button></Link>
+          <Link to='/game'><button>Play again!</button></Link>
         </div>
       }
     </>
