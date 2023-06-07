@@ -13,7 +13,7 @@ root.render(
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/game' element={<Game/>}/>
-        <Route path='/leadboard' element={<LeadBoard/>}/>
+        <Route path='/leaderboard' element={<LeadBoard/>}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
