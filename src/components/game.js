@@ -44,8 +44,9 @@ const Game = ()=>{
       if(click.y<item.bottom&&click.y>item.top){
         setFound(`Well done! You've found Sarah's ${toy}`);
         items.current = items.current.filter((item)=>item.name!==toy);
-        if(items.current.length === 0)
-          navigate("/leaderboard", {state:time});
+        if(items.current.length === 0){
+          navigate("/leaderboard", {state:{time:time}});
+        }
       }
     }else{
       setFound(`Not quite, try again!`);

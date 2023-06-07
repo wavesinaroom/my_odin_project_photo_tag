@@ -1,14 +1,16 @@
 import { useEffect, useState} from "react";
-import {Link} from 'react-router-dom'
+import {Link, useLocation} from 'react-router-dom'
 import supabase from "../config/supabaseClient";
 import uniquid from 'uniqid';
 import Record from "./record";
 
-const LeadBoard = ({time}) =>{
+const LeadBoard = () =>{
   const [records, setRecords] = useState([]);
   const [username, setUsername] = useState(``);
   const [fetchError, setFetchError] = useState(null);
   const [isModal, setIsModal] = useState(true);
+  const loc = useLocation();
+  const time = loc.state.time;
 
   useEffect(()=>{
     
