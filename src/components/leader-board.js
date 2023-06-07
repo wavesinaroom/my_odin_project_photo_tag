@@ -81,7 +81,7 @@ const LeadBoard = () =>{
                 <Record key={uniquid()} record={record}/>
               ))}
           </table>
-          <Link to='/'><button>Back</button></Link>
+          <Link to='/'><button>Home</button></Link>
           <Link to='/game'><button>Play again!</button></Link>
         </div>
       }
