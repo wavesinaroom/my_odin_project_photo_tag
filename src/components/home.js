@@ -19,7 +19,7 @@ const Home = ()=>{
 export default Home;
 
 const divStyle = {
-  backgroundColor:"white",
+  backgroundColor:"#FFFAF1",
   display:"flex",
   flexDirection: "column",
   alignItems:"center",
