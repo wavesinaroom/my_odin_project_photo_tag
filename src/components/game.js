@@ -54,7 +54,7 @@ const Game = ()=>{
   }
 
   return(
-    <div style={layoutStyle}>
+    <div >
       {fetchError&&(<p>{fetchError}</p>)}
       <div style={divStyle}>
         <p>{found}</p>
@@ -72,16 +72,9 @@ const divStyle = {
   display:`flex`,
   fontSize: `32px`,
   color: `white`,
-  justifyContent: `space-around`,
-  marginBottom: `0.5em`
+  marginTop: `0.5em`,
+  marginBottom: `0.5em`,
+  position:`absolute`,
+  left:`30vw`,
 }
 
-const layoutStyle = {
-  display:`flex`,
-  flexDirection:`column`,
-  position: `absolute`,
-  left:`30%`,
-  top:`10%`,
-  marginLeft:`-100px`,
-  marginTop: `-100px`
-}

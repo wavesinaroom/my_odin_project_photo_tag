@@ -7,6 +7,7 @@ const Image = ({handleAction}) =>{
   function handleModalPopup(e){
     setPos({x:e.clientX, y:e.clientY});
     setIsModalOpen(!isModalOpen);
+    console.log(pos.x, pos.y);
   }  
 
   function handleOption(e){
@@ -16,8 +17,8 @@ const Image = ({handleAction}) =>{
 
   return(
     <>
-      <img alt="sarah's-mess" src="https://www.puzzleprime.com/wp-content/uploads/2018/10/bigstock-Find-Objects-Visual-Game-Solu-72484915-1-1920x1574.jpg" onClick={handleModalPopup} />
-      <dialog style={{position:'absolute', top: `${pos.y}px`, left:`${pos.x}px`, marginLeft:'0px',zIndex:'2'}}open={isModalOpen}>
+      <img style={imgStyle} alt="sarah's-mess" src="https://www.puzzleprime.com/wp-content/uploads/2018/10/bigstock-Find-Objects-Visual-Game-Solu-72484915-1-1920x1574.jpg" onClick={handleModalPopup} />
+      <dialog style={{position:'absolute', top: `${pos.y}px`, left:`${pos.x}px`, margin:'0px',zIndex:'5'}}open={isModalOpen}>
         <menu>
           <button onClick={handleOption}>Cat</button>
           <button onClick={handleOption}>Dog</button>
@@ -31,4 +32,10 @@ const Image = ({handleAction}) =>{
 }
 
 export default Image;
+
+const imgStyle = {
+  position: `absolute`,
+  left: `25vw`,
+  top: `10vh`
+}
 

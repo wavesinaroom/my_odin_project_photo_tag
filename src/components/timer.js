@@ -25,8 +25,12 @@ const Timer = ({time, setTime}) =>{
   })
 
   return(
-    <p>{format}</p>
+    <p style={timerStyle}>{format}</p>
   )
 
 }
 export default Timer;
+
+const timerStyle = {
+  marginLeft:`30vw`
+}
