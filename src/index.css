@@ -1,9 +1,11 @@
 body {
+  font-size: 18px;
   margin: 0;
-  font-family: Verdana, Tahoma, Arial, sans-serif;
-  background-image: url(https://wallpapercave.com/wp/DH5Z28x.png);
-  background-repeat: repeat;
+  font-family: Trebuchet MS, Tahoma, Arial, sans-serif;
+  background-color: #8B94E8;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+
 
