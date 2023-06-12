@@ -7,5 +7,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+button{
+  appearance: none;
+  background-color: inherit;
+  border-style: groove;
+  font-weight: bolder;
+  border-radius: 10px;
+  padding: 0.5em;
+  font-size: inherit;
+}
 
+button:active{
+  transform: scale(0.98);
+}
 

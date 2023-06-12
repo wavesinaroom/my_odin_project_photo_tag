@@ -54,14 +54,34 @@ const Game = ()=>{
   }
 
   return(
-    <>
+    <div style={layoutStyle}>
       {fetchError&&(<p>{fetchError}</p>)}
-      <Timer time={time} setTime={setTime}/>
+      <div style={divStyle}>
+        <p>{found}</p>
+        <Timer time={time} setTime={setTime}/>
+      </div>
       <Image handleAction={handleAction}/>
-      <p>{found}</p>
-    </>
+    </div>
   );
 
 }
 
 export default Game;
+
+const divStyle = {
+  display:`flex`,
+  fontSize: `32px`,
+  color: `white`,
+  justifyContent: `space-around`,
+  marginBottom: `0.5em`
+}
+
+const layoutStyle = {
+  display:`flex`,
+  flexDirection:`column`,
+  position: `absolute`,
+  left:`30%`,
+  top:`10%`,
+  marginLeft:`-100px`,
+  marginTop: `-100px`
+}
