@@ -60,12 +60,14 @@ const LeadBoard = () =>{
   return(
     <>
       {fetchError&&(<p>{fetchError}</p>)}
-      <dialog open={isModal} >
-        <p>Thanks for helping out Sarah</p>
-        <form onSubmit={handleSubmit}>
-          <label for="name">Your username</label>
-          <input type="text" name="name" onChange={handleInput} value={username}/>
-          <button type="submit">Send</button>
+      <dialog open={isModal} style={dialogStyle} >
+        <p>Thanks for helping out Sarah!</p>
+        <form style={formStyle} onSubmit={handleSubmit}>
+          <div style={{marginBottom:`1.5em`}}>
+            <label style={{marginRight:`1.5em`}}for="name">Your username</label>
+            <input style={{backgroundColor:`ivory`}}type="text" name="name" onChange={handleInput} value={username}/>
+          </div>
+          <button style={butttonStyle} type="submit">Send</button>
         </form> 
       </dialog>
       {isModal?null
@@ -90,3 +92,34 @@ const LeadBoard = () =>{
 }
 
 export default LeadBoard;
+
+const dialogStyle = {
+  backgroundColor:"#FFFAF1",
+  display:"flex",
+  flexDirection: "column",
+  alignItems:"center",
+  height: "170px",
+  width: "400px",
+  position: "absolute",
+  left:"55%", 
+  top: "40%",
+  marginLeft: "-250px",
+  marginTop: "-250px",
+  paddingLeft: "3em",
+  paddingRight: "3em",
+  borderRadius: "7px",
+  fontSize: `22px`
+}
+
+const formStyle = {
+  display:`flex`,
+  flexDirection: `column`,
+  alignItems: `center`,
+}
+
+const butttonStyle = {
+  fontWeight:`normal`,
+  fontSize:`16px`,
+  paddingRight: `1em`,
+  paddingLeft: `1em`
+}
