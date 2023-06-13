@@ -73,8 +73,14 @@ const LeadBoard = () =>{
         </dialog>
       :
         <div>
-          <table>
-            <caption>Leader Board</caption>
+          <Link to='/'><button>Home</button></Link>
+          <Link to='/game'><button>Play again!</button></Link>
+          <table style={tableStyle}>
+            <thead>
+              <tr>
+                <th colspan="2">Leader board</th>
+              </tr>
+            </thead>
             <tr>
               <th scope="col">Player</th>
               <th scope="col">Record</th>
@@ -83,8 +89,6 @@ const LeadBoard = () =>{
                 <Record key={uniquid()} record={record}/>
               ))}
           </table>
-          <Link to='/'><button>Home</button></Link>
-          <Link to='/game'><button>Play again!</button></Link>
         </div>
       }
     </>
@@ -122,4 +126,8 @@ const butttonStyle = {
   fontSize:`16px`,
   paddingRight: `1em`,
   paddingLeft: `1em`
+}
+
+const tableStyle = {
+  backgroundColor:`ivory`,
 }

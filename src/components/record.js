@@ -18,7 +18,7 @@ const Record = ({record}) =>{
   return(
     <>
       <tr>
-        <td>{record.username}</td>
+        <td style={fieldStyle}>{record.username}</td>
         <td>{formatted}</td>
       </tr>
     </>
@@ -26,3 +26,6 @@ const Record = ({record}) =>{
 }
 
 export default Record;
+
+const fieldStyle = {
+}
