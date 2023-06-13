@@ -7,7 +7,6 @@ const Image = ({handleAction}) =>{
   function handleModalPopup(e){
     setPos({x:e.nativeEvent.offsetX, y:e.nativeEvent.offsetY, clientX:e.clientX, clientY:e.clientY});
     setIsModalOpen(!isModalOpen);
-    console.log("x", e.nativeEvent.offsetX, "y", e.nativeEvent.offsetY)
   }  
 
   function handleOption(e){
