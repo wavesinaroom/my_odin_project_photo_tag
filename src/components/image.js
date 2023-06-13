@@ -14,16 +14,24 @@ const Image = ({handleAction}) =>{
     setIsModalOpen(!isModalOpen);
   }
 
+  function handleOver(e){
+    e.target.style.backgroundColor = `cornsilk`;
+  }
+
+  function handleOut(e){
+    e.target.style.backgroundColor = `white`
+  }
+
   return(
     <>
       <img style={imgStyle} alt="sarah's-mess" src="https://www.puzzleprime.com/wp-content/uploads/2018/10/bigstock-Find-Objects-Visual-Game-Solu-72484915-1-1920x1574.jpg" onClick={handleModalPopup} />
-      <dialog style={{position:'absolute', top: `${pos.clientY}px`, left:`${pos.clientX}px`, margin:'0px',zIndex:'5'}}open={isModalOpen}>
-        <menu>
-          <button onClick={handleOption}>Cat</button>
-          <button onClick={handleOption}>Dog</button>
-          <button onClick={handleOption}>Crayons</button>
-          <button onClick={handleOption}>Book</button>
-          <button onClick={handleOption}>Doll</button>
+      <dialog style={{position:'absolute', top: `${pos.clientY}px`, left:`${pos.clientX}px`, margin:'0px',zIndex:'5', padding:`0`}}open={isModalOpen}>
+        <menu style={menuStyle}>
+          <button style={butStyle} onClick={handleOption} onMouseOver={handleOver} onMouseOut={handleOut}>Cat</button>
+          <button style={butStyle} onClick={handleOption} onMouseOver={handleOver} onMouseOut={handleOut}>Dog</button>
+          <button style={butStyle} onClick={handleOption} onMouseOver={handleOver} onMouseOut={handleOut}>Crayons</button>
+          <button style={butStyle} onClick={handleOption} onMouseOver={handleOver} onMouseOut={handleOut}>Book</button>
+          <button style={butStyle} onClick={handleOption} onMouseOver={handleOver} onMouseOut={handleOut}>Doll</button>
         </menu>
       </dialog>
   </>
@@ -38,3 +46,14 @@ const imgStyle = {
   top: `10vh`
 }
 
+const menuStyle = {
+  display: `flex`,
+  flexDirection:`column`,
+  padding:`0`,
+  margin: `0`
+}
+
+const butStyle = {
+  border:`none`,
+  fontWeight: `normal`
+}
