@@ -68,21 +68,23 @@ const LeadBoard = () =>{
               <label style={{marginRight:`1.5em`}}for="name">Your username</label>
               <input style={{backgroundColor:`ivory`}}type="text" name="name" onChange={handleInput} value={username}/>
             </div>
-            <button style={butttonStyle} type="submit">Send</button>
+            <button style={submitStyle} type="submit">Send</button>
           </form> 
         </dialog>
       :
         <div>
-          <Link to='/'><button>Home</button></Link>
-          <Link to='/game'><button>Play again!</button></Link>
+          <div style={uiButtonStyle}>
+            <Link to='/'><button style={buttonStyle}>Home</button></Link>
+            <Link to='/game'><button style={buttonStyle}>Play again!</button></Link>
+          </div>
           <table style={tableStyle}>
-            <thead>
+            <thead style={headerStyle}>
               <tr>
                 <th colspan="2">Leader board</th>
               </tr>
             </thead>
-            <tr>
-              <th scope="col">Player</th>
+            <tr style={titleStyle}>
+              <th style={{marginRight:`20em`}}scope="col">Player</th>
               <th scope="col">Record</th>
             </tr>
               {records.map(record =>(
@@ -121,7 +123,7 @@ const formStyle = {
   alignItems: `center`,
 }
 
-const butttonStyle = {
+const submitStyle = {
   fontWeight:`normal`,
   fontSize:`16px`,
   paddingRight: `1em`,
@@ -130,4 +132,44 @@ const butttonStyle = {
 
 const tableStyle = {
   backgroundColor:`ivory`,
+  display:"flex",
+  flexDirection: "column",
+  alignItems:"center",
+  minHeight: "170px",
+  width: "900px",
+  position: "absolute",
+  left:"55%", 
+  top: "20%",
+  marginLeft: "-250px",
+  marginTop: "-250px",
+  paddingLeft: "3em",
+  paddingRight: "3em",
+  borderRadius: "7px",
+  fontSize: `22px`,
+  padding:`3em`
+}
+
+const headerStyle = {
+  marginBottom: `1em` 
+}
+
+const titleStyle = {
+  display: `flex`,
+  marginTop: `1em`,
+  marginBottom: `1em`
+}
+
+const buttonStyle = {
+  fontWeight: `normal`,
+  backgroundColor: `ivory`,
+  marginRight:`5vw`,
+  paddingLeft: `1em`,
+  paddingRight:`1em`
+}
+
+const uiButtonStyle = {
+  display: `flex`,
+  justifyContent: `flex-end`,
+  marginTop: `3vh`,
+  marginRight: `3vw`
 }

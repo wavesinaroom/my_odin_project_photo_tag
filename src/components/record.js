@@ -17,8 +17,8 @@ const Record = ({record}) =>{
 
   return(
     <>
-      <tr>
-        <td style={fieldStyle}>{record.username}</td>
+      <tr style={cellStyle}>
+        <td style={{marginRight:`20em`}}>{record.username}</td>
         <td>{formatted}</td>
       </tr>
     </>
@@ -27,5 +27,7 @@ const Record = ({record}) =>{
 
 export default Record;
 
-const fieldStyle = {
+const cellStyle = {
+  display: `flex`,
 }
+
