@@ -2,7 +2,7 @@
   "name": "photo-tag",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://wavesinaroom.github.io/my_odin_project_tag",
+  "homepage": "https://wavesinaroom.github.io/my_odin-project_photo_tag",
   "dependencies": {
     "@supabase/supabase-js": "^2.24.0",
     "@testing-library/jest-dom": "^5.16.5",
