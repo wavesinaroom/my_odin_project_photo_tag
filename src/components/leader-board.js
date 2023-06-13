@@ -60,17 +60,17 @@ const LeadBoard = () =>{
   return(
     <>
       {fetchError&&(<p>{fetchError}</p>)}
-      <dialog open={isModal} style={dialogStyle} >
-        <p>Thanks for helping out Sarah!</p>
-        <form style={formStyle} onSubmit={handleSubmit}>
-          <div style={{marginBottom:`1.5em`}}>
-            <label style={{marginRight:`1.5em`}}for="name">Your username</label>
-            <input style={{backgroundColor:`ivory`}}type="text" name="name" onChange={handleInput} value={username}/>
-          </div>
-          <button style={butttonStyle} type="submit">Send</button>
-        </form> 
-      </dialog>
-      {isModal?null
+      {isModal?
+        <dialog open={isModal} style={dialogStyle}>
+          <p>Thanks for helping out Sarah!</p>
+          <form style={formStyle} onSubmit={handleSubmit}>
+            <div style={{marginBottom:`1.5em`}}>
+              <label style={{marginRight:`1.5em`}}for="name">Your username</label>
+              <input style={{backgroundColor:`ivory`}}type="text" name="name" onChange={handleInput} value={username}/>
+            </div>
+            <button style={butttonStyle} type="submit">Send</button>
+          </form> 
+        </dialog>
       :
         <div>
           <table>
